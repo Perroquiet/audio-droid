@@ -22,6 +22,7 @@ public class MainActivity extends Activity {
 	MediaPlayer mplayer;
 	AACPlayer aacPlayer;
 	String urlpath;
+	boolean is_connect = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,32 +33,10 @@ public class MainActivity extends Activity {
 	     buttonStop.setOnClickListener(stopListener); // Register the onClick listener with the implementation above
 	     
 */		
-		AlertDialog.Builder alert = new AlertDialog.Builder(this);
-
-		alert.setTitle("audio-droid");
-		alert.setMessage("IP Address");
-
-		// Set an EditText view to get user input 
-		final EditText input = new EditText(this);
-		alert.setView(input);
-
-		alert.setPositiveButton("Connect", new DialogInterface.OnClickListener() {
-		public void onClick(DialogInterface dialog, int whichButton) {
-		  String value = input.getText().toString();
-		  // Do something with value!
-		  }
-		});
-
-		alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-		  public void onClick(DialogInterface dialog, int whichButton) {
-		    // Canceled.
-		  }
-		});
-
-		alert.show();mplayer = new MediaPlayer();
+		mplayer = new MediaPlayer();
 		//aacPlayer = new AACPlayer();
 		//urlpath = "rtsp://v2.cache7.c.youtube.com/CjYLENy73wIaLQnIH7D0dZO9IhMYDSANFEIJbXYtZ29vZ2xlSARSBXdhdGNoYIaU5_fj_qyZUQw=/0/0/0/video.3gp";
-		urlpath = "rtsp://192.168.1.100:8554/stream";
+		
 		Toast toast = Toast.makeText(getApplicationContext(), "URL: " + urlpath, Toast.LENGTH_LONG);
 	 	toast.show();
 		setContentView(R.layout.activity_main);
@@ -105,6 +84,42 @@ public class MainActivity extends Activity {
 		 }
 		// aacPlayer.playAsync(urlpath);		 
 	 }
+	 
+	 public void connect(View view){
+		    final Button connectButton = (Button) view;
+		    if(!is_connect){
+		    AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+			alert.setTitle("audio-droid");
+			alert.setMessage("IP Address");
+
+			// Set an EditText view to get user input 
+			final EditText input = new EditText(this);
+			alert.setView(input);
+
+			alert.setPositiveButton("Connect", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int whichButton) {
+			  urlpath = input.getText().toString();
+			  connectButton.setText("Disconnect");
+			  // Do something with value!
+			  }
+			});
+
+			alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+			  public void onClick(DialogInterface dialog, int whichButton) {
+			    // Canceled.
+			  }
+			});
+			is_connect = true;
+			alert.show();
+		    }
+		    
+		    else{
+		    	is_connect = false;
+		    	connectButton.setText("Connect");
+		    }
+		 }
+	 }
 	 /*@Override
 	 protected void onStart() {//activity is started and visible to the user
 	  Log.d(logtag,"onStart() called");
@@ -134,4 +149,4 @@ public class MainActivity extends Activity {
 	   super.onDestroy();
 	 }*/
 
-}
+
