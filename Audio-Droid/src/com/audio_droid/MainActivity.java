@@ -22,6 +22,7 @@ public class MainActivity extends Activity {
 	MediaPlayer mplayer;
 	AACPlayer aacPlayer;
 	String urlpath;
+	Toast con;
 	boolean is_connect = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -98,10 +99,25 @@ public class MainActivity extends Activity {
 			alert.setView(input);
 
 			alert.setPositiveButton("Connect", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int whichButton) {
+			
+			  public void onClick(DialogInterface dialog, int whichButton) {
 			  urlpath = input.getText().toString();
 			  connectButton.setText("Disconnect");
-			  Toast con = Toast.makeText(getApplicationContext(), "Connected to: " + urlpath, Toast.LENGTH_LONG);
+			  try {
+				mplayer.setDataSource(urlpath);
+				mplayer.prepare();
+				mplayer.start();
+			  }
+			  catch(Exception e){
+				  
+			  }
+			  if(mplayer.isPlaying()){
+				  con = Toast.makeText(getApplicationContext(), "Connected to: " + urlpath, Toast.LENGTH_LONG);
+			  }
+			  else
+			  {
+				  con = Toast.makeText(getApplicationContext(), "Connection Error", Toast.LENGTH_LONG);
+			  }
 			  con.show();
 			  // Do something with value!
 			  }
