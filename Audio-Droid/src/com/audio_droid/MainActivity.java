@@ -101,6 +101,8 @@ public class MainActivity extends Activity {
 			public void onClick(DialogInterface dialog, int whichButton) {
 			  urlpath = input.getText().toString();
 			  connectButton.setText("Disconnect");
+			  Toast con = Toast.makeText(getApplicationContext(), "Connected to: " + urlpath, Toast.LENGTH_LONG);
+			  con.show();
 			  // Do something with value!
 			  }
 			});
@@ -115,8 +117,27 @@ public class MainActivity extends Activity {
 		    }
 		    
 		    else{
-		    	is_connect = false;
-		    	connectButton.setText("Connect");
+		    	AlertDialog.Builder alert = new AlertDialog.Builder(this);
+		    	alert.setTitle("audio-droid");
+				alert.setMessage("Do you really want to disconnect?");
+
+				alert.setPositiveButton("Disconnect", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int whichButton) {
+
+			      is_connect = false;
+			      connectButton.setText("Connect");
+				  urlpath = null;
+				  Toast disco = Toast.makeText(getApplicationContext(), "You have been disconnected", Toast.LENGTH_LONG);
+				  disco.show();
+				  }
+				});
+
+				alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+				  public void onClick(DialogInterface dialog, int whichButton) {
+				    // Canceled.
+				  }
+				});
+				alert.show();
 		    }
 		 }
 	 }
