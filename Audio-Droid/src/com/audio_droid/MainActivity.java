@@ -1,6 +1,7 @@
 package com.audio_droid;
 
 import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnInfoListener;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -105,20 +106,26 @@ public class MainActivity extends Activity {
 			  connectButton.setText("Disconnect");
 			  try {
 				mplayer.setDataSource(urlpath);
+				mplayer.setOnInfoListener(new MediaPlayer.OnInfoListener(){
+					public boolean onInfo(MediaPlayer mplayer, int what, int extra) {
+						return true;
+					}
+				}
+				);
 				mplayer.prepare();
 				mplayer.start();
+				
 			  }
 			  catch(Exception e){
 				  
 			  }
 			  if(mplayer.isPlaying()){
-				  con = Toast.makeText(getApplicationContext(), "Connected to: " + urlpath, Toast.LENGTH_LONG);
+				  Toast.makeText(getApplicationContext(), "Connected to: " + urlpath, Toast.LENGTH_LONG).show();
 			  }
 			  else
 			  {
-				  con = Toast.makeText(getApplicationContext(), "Connection Error", Toast.LENGTH_LONG);
+				  Toast.makeText(getApplicationContext(), "Connection Error", Toast.LENGTH_LONG).show();
 			  }
-			  con.show();
 			  // Do something with value!
 			  }
 			});
