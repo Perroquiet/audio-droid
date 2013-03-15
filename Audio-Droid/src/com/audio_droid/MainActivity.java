@@ -21,7 +21,7 @@ public class MainActivity extends Activity {
 		mplayer = new MediaPlayer();
 		//aacPlayer = new AACPlayer();
 		//urlpath = "rtsp://v2.cache7.c.youtube.com/CjYLENy73wIaLQnIH7D0dZO9IhMYDSANFEIJbXYtZ29vZ2xlSARSBXdhdGNoYIaU5_fj_qyZUQw=/0/0/0/video.3gp";
-		urlpath = "rtsp://192.168.1.100:8554/stream";
+		urlpath = "http://10.10.1.50:8554";
 		Toast toast = Toast.makeText(getApplicationContext(), "URL: " + urlpath, Toast.LENGTH_LONG);
 	 	toast.show();
 		setContentView(R.layout.activity_main);
