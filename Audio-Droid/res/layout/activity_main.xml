@@ -7,11 +7,12 @@
         <LinearLayout android:layout_weight="6" android:orientation="vertical" android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true" android:layout_width="fill_parent" android:layout_height="0dip" >
 
+            
             <ImageView
                 android:id="@+id/bg"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:background="@drawable/bg" >
+                android:background="@drawable/android_sunglasses" >
 
             </ImageView>
         </LinearLayout>
@@ -27,11 +28,15 @@
             android:gravity="center"
             android:orientation="horizontal"
             android:weightSum="5" >
+            
 
             <View android:layout_weight="1" android:layout_width="0dip" android:layout_height="0dip" />
-            <Button android:id="@+id/btnPlay" android:layout_width="0dip" android:layout_height="fill_parent"
-                android:layout_weight="1" android:background="@drawable/play" android:layout_margin="5dp"
-                android:onClick="playmusic" />
+            <Button
+                android:id="@+id/buttonConnect"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Connect"
+                android:onClick="connect" />
             <View android:layout_weight="1" android:layout_width="0dip" android:layout_height="0dip" />
         </LinearLayout>
     </LinearLayout>
