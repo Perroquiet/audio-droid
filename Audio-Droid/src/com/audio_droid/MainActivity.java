@@ -23,6 +23,7 @@ public class MainActivity extends Activity {
 	MediaPlayer mplayer;
 	AACPlayer aacPlayer;
 	String urlpath;
+	String access;
 	Toast con;
 	boolean is_connect = false;
 	@Override
@@ -38,12 +39,10 @@ public class MainActivity extends Activity {
 		mplayer = new MediaPlayer();
 		//aacPlayer = new AACPlayer();
 		//urlpath = "rtsp://v2.cache7.c.youtube.com/CjYLENy73wIaLQnIH7D0dZO9IhMYDSANFEIJbXYtZ29vZ2xlSARSBXdhdGNoYIaU5_fj_qyZUQw=/0/0/0/video.3gp";
-<<<<<<< HEAD
-		urlpath = "http://10.10.1.50:8554";
-=======
+		access = "http" + "://";
+		urlpath = "10.10.1.50:8554";
 		
->>>>>>> 9113be23addbbcaed80239c902d91072bdc115c1
-		Toast toast = Toast.makeText(getApplicationContext(), "URL: " + urlpath, Toast.LENGTH_LONG);
+		Toast toast = Toast.makeText(getApplicationContext(), "URL: " + access + urlpath, Toast.LENGTH_LONG);
 	 	toast.show();
 		setContentView(R.layout.activity_main);
 	}
@@ -77,10 +76,10 @@ public class MainActivity extends Activity {
 		 Context context = getApplicationContext();
 		 CharSequence text = "Playing";
 		 int duration = Toast.LENGTH_SHORT;
-		 Toast toast = Toast.makeText(context, text + " " + urlpath, duration);
+		 Toast toast = Toast.makeText(context, text + " " + access+urlpath, duration);
 		 toast.show();
 		 try {
-		 mplayer.setDataSource(urlpath);
+		 mplayer.setDataSource(access+urlpath);
 		 //AssetFileDescriptor afd = getAssets().openFd("Wake Up.mp3");
 		 //mplayer.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
 		 mplayer.prepare();
@@ -109,7 +108,7 @@ public class MainActivity extends Activity {
 			  urlpath = input.getText().toString();
 			  connectButton.setText("Disconnect");
 			  try {
-				mplayer.setDataSource(urlpath);
+				mplayer.setDataSource(access+urlpath);
 				mplayer.setOnInfoListener(new MediaPlayer.OnInfoListener(){
 					public boolean onInfo(MediaPlayer mplayer, int what, int extra) {
 						return true;
@@ -124,7 +123,7 @@ public class MainActivity extends Activity {
 				  
 			  }
 			  if(mplayer.isPlaying()){
-				  Toast.makeText(getApplicationContext(), "Connected to: " + urlpath, Toast.LENGTH_LONG).show();
+				  Toast.makeText(getApplicationContext(), "Connected to: " + access+urlpath, Toast.LENGTH_LONG).show();
 			  }
 			  else
 			  {
