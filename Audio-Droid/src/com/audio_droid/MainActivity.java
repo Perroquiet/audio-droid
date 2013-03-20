@@ -39,8 +39,6 @@ public class MainActivity extends Activity {
 		mplayer = new MediaPlayer();
 		//aacPlayer = new AACPlayer();
 		//urlpath = "rtsp://v2.cache7.c.youtube.com/CjYLENy73wIaLQnIH7D0dZO9IhMYDSANFEIJbXYtZ29vZ2xlSARSBXdhdGNoYIaU5_fj_qyZUQw=/0/0/0/video.3gp";
-		access = "http" + "://";
-		urlpath = "10.10.1.50:8554";
 		
 		Toast toast = Toast.makeText(getApplicationContext(), "URL: " + access + urlpath, Toast.LENGTH_LONG);
 	 	toast.show();
@@ -105,10 +103,11 @@ public class MainActivity extends Activity {
 			alert.setPositiveButton("Connect", new DialogInterface.OnClickListener() {
 			
 			  public void onClick(DialogInterface dialog, int whichButton) {
-			  urlpath = input.getText().toString();
+			  urlpath = "http://" + input.getText().toString();
+			  is_connect = true;
 			  connectButton.setText("Disconnect");
 			  try {
-				mplayer.setDataSource(access+urlpath);
+				mplayer.setDataSource(urlpath);
 				mplayer.setOnInfoListener(new MediaPlayer.OnInfoListener(){
 					public boolean onInfo(MediaPlayer mplayer, int what, int extra) {
 						return true;
@@ -138,7 +137,6 @@ public class MainActivity extends Activity {
 			    // Canceled.
 			  }
 			});
-			is_connect = true;
 			alert.show();
 		    }
 		    
