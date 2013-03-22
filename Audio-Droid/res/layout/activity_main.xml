@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/screen" android:layout_width="fill_parent" android:layout_height="fill_parent" >
@@ -40,4 +41,52 @@
             <View android:layout_weight="1" android:layout_width="0dip" android:layout_height="0dip" />
         </LinearLayout>
     </LinearLayout>
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/screen" android:layout_width="fill_parent" android:layout_height="fill_parent" >
+
+    <ImageView
+        android:id="@+id/bg"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/android_sunglasses" />
+
+    <LinearLayout android:orientation="vertical" android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+        android:weightSum="7" >
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:orientation="vertical" >
+
+        
+
+        <Button
+            android:id="@+id/buttonMode"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="setMode"
+            android:text="Mode: RTSP" />
+        <Button
+            android:id="@+id/buttonConnect"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="connect"
+            android:text="Connect" />
+    <Button
+            android:id="@+id/buttonHelp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="help"
+            android:text="Help" />
+        
+    </LinearLayout>
+
+>>>>>>> 27bf9c026cef59bffa25691e8e8878bee03e099b
 </RelativeLayout>

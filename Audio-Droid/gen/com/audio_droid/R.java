@@ -20,8 +20,14 @@ public final class R {
     public static final class id {
         public static final int bg=0x7f070001;
         public static final int buttonConnect=0x7f070003;
+<<<<<<< HEAD
         public static final int buttons=0x7f070002;
         public static final int menu_settings=0x7f070004;
+=======
+        public static final int buttonHelp=0x7f070004;
+        public static final int buttonMode=0x7f070002;
+        public static final int menu_settings=0x7f070005;
+>>>>>>> 27bf9c026cef59bffa25691e8e8878bee03e099b
         public static final int screen=0x7f070000;
     }
     public static final class layout {
